@@ -1,0 +1,3 @@
+El sistema de correo implementa estructuras eficientes: utiliza una cola de prioridad (heapq) para mensajes urgentes, listas y diccionarios para organizar mensajes, y modela la red de servidores como un grafo con algoritmos BFS y DFS.
+Las operaciones más comunes (registro, conexión y envío) son en su mayoría de complejidad O(1) o O(log n), garantizando buen rendimiento.
+Solo el manejo de la cola normal puede optimizarse reemplazando las listas por deque para lograr extracción O(1).
