@@ -20,6 +20,11 @@ class ServidorCorreo:
             self.conexiones.append(otro_servidor)
             otro_servidor.conexiones.append(self)
 
+    def enviar_mensaje(self, mensaje):
+        """Envía un mensaje y procesa la cola."""
+        self.recibir_mensaje(mensaje)
+        self.procesar_mensajes()
+
     def recibir_mensaje(self, mensaje):
         """Recibe un mensaje y lo agrega a la cola correspondiente."""
         if hasattr(mensaje, 'urgente') and mensaje.urgente:

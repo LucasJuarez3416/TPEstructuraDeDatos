@@ -15,7 +15,8 @@ class Carpeta(CarpetaBase):
         self.__mensajes.append(mensaje)
 
     def listar_mensajes(self):
-        return [msg.mostrar_resumen() for msg in self.__mensajes]
+        # devuelve objetos Mensaje, no strings
+        return self.__mensajes
 
     def agregar_subcarpeta(self, nombre_subcarpeta):
         subcarpeta = Carpeta(nombre_subcarpeta, carpeta_padre=self)

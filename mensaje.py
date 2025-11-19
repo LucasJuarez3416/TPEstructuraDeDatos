@@ -1,10 +1,14 @@
 class Mensaje:
-    def __init__(self, origen, destino, contenido, urgente=False):
+    def __init__(self, origen, destino, asunto, contenido, urgente=False):
         self.origen = origen
         self.destino = destino
+        self.asunto = asunto
         self.contenido = contenido
         self.urgente = urgente
 
-    def __repr__(self):
+    def mostrar_resumen(self):
         prioridad = "URGENTE" if self.urgente else "Normal"
-        return f"<Mensaje de {self.origen.nombre} a {self.destino.nombre} ({prioridad})>"
+        return f"[{prioridad}] {self.asunto} - de {self.origen.nombre} para {self.destino.nombre}"
+
+    def __repr__(self):
+        return self.mostrar_resumen()

@@ -7,10 +7,15 @@ class Usuario(UsuarioBase):
         self.__email = email
         self.__password = password
         self.__raiz = Carpeta("Bandeja de entrada")
+        self.servidor = None   # necesario para servidor_correo
 
     @property
     def email(self):
         return self.__email
+
+    @property
+    def nombre(self):
+        return self.__nombre
 
     def recibir_mensaje(self, mensaje):
         self.__raiz.agregar_mensaje(mensaje)
@@ -27,17 +32,20 @@ class Usuario(UsuarioBase):
 
     def mover_mensaje(self, asunto, carpeta_destino):
         resultados = self.__raiz.buscar_mensajes_recursivo(asunto)
-        if resultados:
-            mensaje = resultados[0]
-            origen = self.__raiz.obtener_subcarpeta("Bandeja de entrada")
-            destino = self.__raiz.obtener_subcarpeta(carpeta_destino)
-            if destino:
-                origen.mover_mensaje(mensaje, destino)
-                print(f"Mensaje movido a {carpeta_destino}")
-            else:
-                print("Carpeta destino no encontrada.")
-        else:
+
+        if not resultados:
             print("No se encontró ningún mensaje con ese asunto.")
+            return
+
+        mensaje = resultados[0]
+        origen = self.__raiz                  # origen correcto
+        destino = self.__raiz.obtener_subcarpeta(carpeta_destino)
+
+        if destino:
+            origen.mover_mensaje(mensaje, destino)
+            print(f"Mensaje movido a {carpeta_destino}")
+        else:
+            print("Carpeta destino no encontrada.")
 
     def buscar_mensajes(self, texto_busqueda):
         return self.__raiz.buscar_mensajes_recursivo(texto_busqueda)
