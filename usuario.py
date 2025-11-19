@@ -1,5 +1,5 @@
-from TPEstructuraDeDatos.pyinterfaces.usuario_base import UsuarioBase
-from TPEstructuraDeDatos.carpeta import Carpeta
+from pyinterfaces.usuario_base import UsuarioBase
+from carpeta import Carpeta
 
 class Usuario(UsuarioBase):
     def __init__(self, nombre, email, password):
