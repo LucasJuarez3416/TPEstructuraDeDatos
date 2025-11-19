@@ -1,4 +1,4 @@
-from TPEstructuraDeDatos.pyinterfaces.carpeta_base import CarpetaBase
+from pyinterfaces.carpeta_base import CarpetaBase
 
 class Carpeta(CarpetaBase):
     def __init__(self, nombre, carpeta_padre=None):

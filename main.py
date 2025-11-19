@@ -1,6 +1,6 @@
-from TPEstructuraDeDatos.servidor_correo import ServidorCorreo
-from TPEstructuraDeDatos.usuario import Usuario
-from TPEstructuraDeDatos.mensaje import Mensaje
+from servidor_correo import ServidorCorreo
+from usuario import Usuario
+from mensaje import Mensaje
 
 def main():
     # Crear servidores
@@ -47,8 +47,8 @@ def main():
     )
 
     # Enviar mensajes al servidor origen
-    servidor1.recibir_mensaje(mensaje1)
-    servidor1.recibir_mensaje(mensaje2)
+    servidor1.enviar_mensaje(mensaje1) 
+    servidor1.enviar_mensaje(mensaje2)
 
     # Procesar mensajes del servidor origen (urgentes primero)
     servidor1.procesar_mensajes()

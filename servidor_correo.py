@@ -53,6 +53,7 @@ class ServidorCorreo:
             if ruta and len(ruta) > 1:
                 siguiente = ruta[1]
                 siguiente.recibir_mensaje(mensaje)
+                siguiente.procesar_mensajes()  # ← ESTA LÍNEA FALTABA, POR ESO LOS MENSAJES SE QUEDABAN EN EL SERVIDOR 2
 
     def buscar_ruta_bfs(self, destino):
         """Busca una ruta entre servidores usando BFS (Breadth-First Search)."""
